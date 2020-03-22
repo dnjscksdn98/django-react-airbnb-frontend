@@ -5,7 +5,7 @@ import { login } from "../modules/auth";
 import Login from "../components/Login";
 
 function LoginContainer() {
-  const { isAuthenticated } = useSelector(state => state.auth.token !== null);
+  const isAuthenticated = useSelector(state => state.auth.token !== null);
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({

@@ -1,21 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { checkState } from "../modules/auth";
+import { logout } from "../modules/auth";
 
 function NavBar() {
-  const { isAuthenticated } = useSelector(state => state.auth.token !== null);
+  const isAuthenticated = useSelector(state => state.auth.token !== null);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(checkState());
-  }, [dispatch]);
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <React.Fragment>
+      <Link to="/">Home</Link>
       {isAuthenticated ? (
         <React.Fragment>
-          <Link to="/logout">Logout</Link>
+          <button onClick={handleLogout}>Logout</button>
           <Link to="/profile">Profile</Link>
         </React.Fragment>
       ) : (

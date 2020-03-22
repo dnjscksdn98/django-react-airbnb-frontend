@@ -5,7 +5,7 @@ import Signup from "../components/Signup";
 import { signup } from "../modules/auth";
 
 function SignupContainer() {
-  const { isAuthenticated } = useSelector(state => state.auth.token !== null);
+  const isAuthenticated = useSelector(state => state.auth.token !== null);
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
