@@ -1,14 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../modules/auth";
 
-function NavBar() {
+function NavBar(props) {
   const isAuthenticated = useSelector(state => state.auth.token !== null);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
     dispatch(logout());
+    props.history.push("/");
   };
 
   return (
@@ -26,4 +27,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default withRouter(NavBar);
